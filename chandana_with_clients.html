@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Chandana Groups</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;overflow-x:hidden;background:#fff;}
+
+/* ─── NAVBAR ─── */
+.topnav{background:#fff;border-bottom:2.5px solid #1b5eab;padding:7px 0;position:sticky;top:0;z-index:999;box-shadow:0 2px 12px rgba(0,0,0,.08);}
+.brand-single{font-size:1.18rem;font-weight:900;color:#09101d;letter-spacing:.4px;}
+.brand-single span{font-weight:400;}
+.nav-link{color:#1a3263!important;font-weight:500;font-size:.875rem;padding:5px 11px!important;}
+.nav-link.active{border-bottom:2.5px solid #1a3263;padding-bottom:3px!important;}
+.btn-cnav{background:linear-gradient(135deg,#1460b8,#1e82e0);color:#fff!important;font-weight:600;font-size:.875rem;border-radius:7px;padding:8px 22px!important;box-shadow:0 2px 10px rgba(20,96,184,.3);}
+
+/* ─── HERO ─── */
+.hero-section{background:linear-gradient(108deg,#0b2252 0%,#1452a0 40%,#1e72c8 70%,#2a8fdc 100%);position:relative;overflow:hidden;}
+.hero-glow{position:absolute;top:-80px;right:80px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,.11) 0%,transparent 65%);pointer-events:none;z-index:1;}
+.hero-inner{position:relative;z-index:2;display:flex;align-items:stretch;min-height:380px;}
+.hero-text-col{flex:0 0 50%;max-width:50%;padding:58px 30px 58px 0;display:flex;align-items:center;}
+.hero-text-col .pad{padding-left:max(15px,calc((100vw - 1140px)/2 + 12px));}
+.hero-text-col h1{font-size:1.9rem;font-weight:800;color:#fff;line-height:1.22;margin-bottom:12px;}
+.hero-text-col .tagline{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.96);line-height:1.55;margin-bottom:9px;}
+.hero-text-col .body-txt{font-size:.77rem;color:rgba(255,255,255,.78);line-height:1.78;margin-bottom:28px;max-width:380px;}
+.btn-explore{background:linear-gradient(135deg,#d44e00,#ef6820);color:#fff;font-weight:700;font-size:.83rem;border:none;border-radius:6px;padding:11px 24px;text-decoration:none;display:inline-block;box-shadow:0 4px 14px rgba(212,78,0,.42);}
+.btn-explore:hover{background:linear-gradient(135deg,#b34000,#d44e00);color:#fff;}
+.btn-contact-hero{background:transparent;border:2px solid rgba(255,255,255,.70);color:#fff;font-weight:600;font-size:.83rem;border-radius:6px;padding:10px 22px;text-decoration:none;display:inline-block;}
+.btn-contact-hero:hover{background:rgba(255,255,255,.12);color:#fff;}
+.hero-img-col{flex:0 0 50%;max-width:50%;position:relative;overflow:hidden;}
+.hero-img-col img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;}
+.hero-img-col::before{content:'';position:absolute;top:0;left:0;width:120px;height:100%;background:linear-gradient(to right,#1452a0 0%,transparent 100%);z-index:2;}
+
+/* ─── ABOUT ─── */
+.about-sec{background:#fff;padding:50px 0 42px;}
+.sec-ttl{font-size:1.45rem;font-weight:700;color:#1c2f5e;text-align:center;margin-bottom:7px;}
+.sec-ttl span{font-weight:900;}
+.sec-bar{width:52px;height:3px;background:#1460b8;border-radius:3px;margin:0 auto 16px;}
+.sec-sub{text-align:center;font-size:.84rem;color:#555;line-height:1.85;max-width:630px;margin:0 auto;}
+.divider-line{border:none;border-top:1px solid #dde4f0;margin:0 44px;}
+
+/* ═══════════════════════════════════════════════
+   OUR COMPANIES — EXACT FIGMA CARD DESIGN
+═══════════════════════════════════════════════ */
+.companies-sec{background:#fff;padding:44px 0 60px;}
+
+/* card wrapper */
+.co-card{
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.11);
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  background:#fff;
+  transition:transform .22s, box-shadow .22s;
+}
+.co-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 32px rgba(0,0,0,.16);
+}
+
+/* ── HEADER ── */
+.co-hd{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 15px;
+  min-height:74px;
+  position:relative;
+  overflow:hidden;
+}
+/* exact header colours from Figma */
+.hd-1{background:linear-gradient(135deg,#0d2c60 0%,#1a4fa0 100%);}
+.hd-2{background:linear-gradient(135deg,#c04800 0%,#e85e0a 100%);}
+.hd-3{background:linear-gradient(135deg,#0f46a8 0%,#1c70c8 100%);}
+.hd-4{background:linear-gradient(135deg,#9c0f0f 0%,#c42828 100%);}
+
+/* subtle circle glow top-right of header */
+.co-hd::after{
+  content:'';
+  position:absolute;
+  top:-30px;right:-30px;
+  width:100px;height:100px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.10);
+  pointer-events:none;
+}
+
+/* icon inside header */
+.co-hd-icon{
+  width:46px;height:46px;
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.co-hd-icon svg{width:46px;height:46px;}
+
+/* header text */
+.co-hd-text{
+  color:#fff;
+  line-height:1.28;
+}
+.co-hd-text .line1{font-size:.88rem;font-weight:400;display:block;}
+.co-hd-text .line2{font-size:.98rem;font-weight:800;display:block;}
+
+/* ── BODY ── */
+.co-body{
+  flex:1;
+  background:#fff;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height:180px;
+}
+
+/* description text */
+.co-desc{
+  font-size:.82rem;
+  font-weight:500;
+  color:#3a3a3a;
+  line-height:1.6;
+  padding:14px 15px 0 15px;
+  position:relative;
+  z-index:2;
+  flex:1;
+}
+
+/* ── WAVE BOTTOM AREA — fills entire bottom half of card ── */
+.co-wave-bottom{
+  position:relative;
+  height:140px;
+  overflow:hidden;
+  flex-shrink:0;
+  margin-top:-30px; /* overlap slightly into text area for full-half look */
+}
+
+/* SVG fills the whole wave-bottom area */
+.co-wave-bottom svg{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  display:block;
+}
+
+/* ── LEARN MORE BUTTON — sits at bottom of wave ── */
+.co-btn-row{
+  position:absolute;
+  bottom:14px; left:14px; right:14px;
+  z-index:3;
+}
+.btn-learn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  padding:10px 16px;
+  font-size:.83rem;
+  font-weight:700;
+  letter-spacing:.15px;
+  border:none;
+  border-radius:7px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:filter .2s, transform .15s;
+}
+.btn-learn:hover{filter:brightness(1.1);transform:translateY(-1px);}
+.btn-learn .arr{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.25);
+  font-size:.72rem;
+}
+/* navy button (cards 1 & 3) */
+.btn-navy{background:linear-gradient(135deg,#0d2c60,#1a4fa0);color:#fff;}
+/* orange button (cards 2 & 4) */
+.btn-orange{background:linear-gradient(135deg,#c04800,#e85e0a);color:#fff;}
+
+/* ─── CLIENTS / PARTNERS MARQUEE ─── */
+.clients-sec{background:#fff;padding:44px 0 50px;overflow:hidden;}
+.clients-sec .sec-ttl{margin-bottom:7px;}
+.marquee-track{display:flex;gap:0;width:max-content;animation:marqueeScroll 28s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+.marquee-wrap{overflow:hidden;width:100%;mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);}
+.client-logo-card{
+  flex-shrink:0;
+  width:150px;
+  height:80px;
+  margin:0 16px;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  transition:box-shadow .2s, transform .2s;
+}
+.client-logo-card:hover{box-shadow:0 6px 22px rgba(20,96,184,.18);transform:translateY(-3px);}
+.client-logo-card img{max-width:120px;max-height:56px;object-fit:contain;filter:grayscale(30%);transition:filter .2s;}
+.client-logo-card:hover img{filter:grayscale(0%);}
+@keyframes marqueeScroll{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-50%);}
+}
+
+/* ─── WHY CHOOSE ─── */
+.why-sec{background:linear-gradient(180deg,#e6f2fb 0%,#d8eaf7 100%);padding:50px 0 0;}
+.chk-item{display:flex;align-items:center;gap:13px;margin-bottom:22px;}
+.chk-dot{width:37px;height:37px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#1048a4,#1e70c6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem;box-shadow:0 3px 10px rgba(16,72,164,.28);}
+.chk-txt{font-size:.93rem;font-weight:600;color:#1c2f5e;}
+.form-card{background:#fff;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,.10);padding:26px 24px 28px;}
+.f-input{display:block;width:100%;border:1px solid #cdd6e8;border-radius:7px;font-family:'Poppins',sans-serif;font-size:.84rem;color:#333;padding:10px 13px;margin-bottom:12px;outline:none;transition:border .18s;background:#fff;}
+.f-input:focus{border-color:#1460b8;}
+.f-input::placeholder{color:#b5bfcc;}
+.btn-send{background:linear-gradient(135deg,#c74c00,#ea6010);color:#fff;font-weight:700;font-size:.9rem;border:none;border-radius:8px;padding:12px;width:100%;box-shadow:0 4px 14px rgba(199,76,0,.36);cursor:pointer;}
+
+/* ─── GET IN TOUCH ─── */
+.git-sec{background:linear-gradient(160deg,#0a1d4a 0%,#103c96 50%,#1a6ac4 100%);padding:40px 0 50px;position:relative;overflow:hidden;}
+.git-content{position:relative;z-index:2;}
+.git-title{font-size:1.15rem;font-weight:700;color:#fff;border-bottom:1.5px solid rgba(255,255,255,.22);padding-bottom:10px;margin-bottom:18px;}
+.git-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.88);font-size:.86rem;margin-bottom:13px;}
+.git-item i{color:#ffd54f;font-size:1rem;flex-shrink:0;}
+
+/* ─── FOOTER ─── */
+.footer-bar{background:#081538;padding:25px 0 15px;}
+.f-lnk a{color:rgba(255,255,255,.70);text-decoration:none;font-size:.79rem;padding:0 10px;border-right:1px solid rgba(255,255,255,.18);}
+.f-lnk a:last-child{border-right:none;}
+.f-lnk a:hover{color:#fff;}
+.soc{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.11);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:.77rem;text-decoration:none;margin:0 2px;transition:all .2s;}
+.soc:hover{background:#ea6010;}
+.f-copy{color:rgba(255,255,255,.38);font-size:.74rem;text-align:center;margin-top:7px;}
+.footer-nav-link{color:rgba(255,255,255,.85)!important;font-weight:500;font-size:.79rem;padding:4px 12px!important;transition:color .2s;}
+.footer-nav-link:hover{color:#fff!important;}
+.footer-nav-divider{border:none;border-top:1px solid rgba(255,255,255,.12);margin:18px 0;}
+.sec-ttl-link{display:inline-block;text-decoration:none;color:inherit;transition:all .2s;cursor:pointer;}
+.sec-ttl-link:hover .sec-ttl{text-decoration:underline;}
+@media(max-width:767px){.footer-nav .navbar-nav{flex-direction:column;align-items:center;gap:.5rem;}}
+
+@media(max-width:767px){
+  .hero-inner{flex-direction:column;}
+  .hero-text-col,.hero-img-col{flex:0 0 100%;max-width:100%;}
+  .hero-img-col{height:220px;}
+  .hero-text-col{padding:36px 15px 60px;}
+  .hero-text-col h1{font-size:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="topnav navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="chandana logo.jpeg" alt="Chandana Logo" style="height: 40px; width: auto; border-radius: 50%; margin-right: 12px;">
+      <span class="brand-single">CHANDANA <span>GROUPS</span></span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMain">
+      <ul class="navbar-nav align-items-center gap-1">
+        <li><a class="nav-link active" href="#">Home</a></li>
+<li><a class="nav-link" href="#about">About Us</a></li>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#companies" id="companiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-right: 24px !important;">Our Companies <i class="bi bi-chevron-down ms-1" style="font-size: .75rem;"></i></a>
+  <ul class="dropdown-menu" aria-labelledby="companiesDropdown" style="min-width: 280px; border-radius: 10px; box-shadow: 0 8px 32px rgba(0,0,0,.12); border: none; margin-top: 6px;">
+    <li><a class="dropdown-item py-2 px-3 fw-semibold" href="#">Chandana IT Solutions</a></li>
+    <li><a class="dropdown-item py-2 px-3 fw-semibold" href="#">JobNest Hub Solution</a></li>
+    <li><a class="dropdown-item py-2 px-3 fw-semibold" href="#">Chandana Tech Careers</a></li>
+    <li><a class="dropdown-item py-2 px-3 fw-semibold" href="#">Sri Sharada Nikethana</a></li>
+  </ul>
+</li>
+
+        <li><a class="nav-link" href="#">Careers</a></li>
+        <li class="ms-2"><a class="nav-link btn-cnav" href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero-section">
+  <div class="hero-glow"></div>
+  <div class="container-fluid px-0">
+    <div class="hero-inner">
+      <div class="hero-text-col">
+        <div class="pad">
+          <h1>Welcome to Chandana Groups</h1>
+          <p class="tagline">Empowering Careers, Technology, and Opportunities Through Innovation and Excellence.</p>
+          <p class="body-txt">Chandana Groups is a service organization focused on technology services, recruitment, career development, and educational initiatives to help individuals and businesses succeed.</p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="#companies" class="btn-explore">Explore Our Companies</a>
+            <a href="#contact" class="btn-contact-hero">Contact Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-img-col">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=85" alt="Team"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about-sec" id="about">
+  <div class="container">
+    <a href="#footer-nav" class="sec-ttl-link"><h2 class="sec-ttl">About <span>Chandana Groups</span></h2></a>
+    <div class="sec-bar"></div>
+    <p class="sec-sub">Chandana Groups is a multi-service organization focused on technology services, recruitment, career development, and educational initiatives to help individuals and businesses succeed.</p>
+  </div>
+</section>
+<hr class="divider-line"/>
+
+<!-- ══════════════════════════════════════════════
+     OUR COMPANIES — EXACT FIGMA REPLICA
+══════════════════════════════════════════════ -->
+<section class="companies-sec" id="companies">
+  <div class="container">
+    <a href="#footer-nav" class="sec-ttl-link"><h2 class="sec-ttl">Our <span>Companies</span></h2></a>
+    <div class="sec-bar"></div>
+
+    <div class="row g-4 mt-2">
+
+      <!-- ╔══════════════════════════╗
+           ║  CARD 1 — NAVY BLUE     ║
+           ║  Chandana IT Solutions  ║
+           ╚══════════════════════════╝ -->
+      <div class="col-lg-3 col-md-6">
+        <div class="co-card">
+          <!-- Header -->
+          <div class="co-hd hd-1">
+<div class="co-hd-icon">
+              <img src="chandana it solutions logo.jpeg" alt="IT Solutions Logo" style="height: 35px; width: auto; border-radius: 8px;">
+            </div>
+            <div class="co-hd-text">
+              <span class="line1">Chandana</span>
+              <span class="line2">IT Solutions</span>
+            </div>
+          </div>
+          <!-- Body -->
+          <div class="co-body">
+            <p class="co-desc">IT Services &amp; Software Development</p>
+            <div class="co-wave-bottom">
+              <svg viewBox="0 0 300 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Line 1: WAVE — dips down in middle then rises to right -->
+                <path d="M0,140 L0,55 C50,45 80,85 130,70 C180,55 240,20 300,10 L300,140 Z"
+                      fill="rgba(13,44,96,0.07)"/>
+                <!-- Line 2: inside line1, same wave slightly lower -->
+                <path d="M0,140 L0,75 C50,65 80,100 130,88 C180,75 240,42 300,30 L300,140 Z"
+                      fill="rgba(13,44,96,0.12)"/>
+                <!-- Line 3: dark small curve bottom-right corner only -->
+                <path d="M200,140 C235,136 272,120 300,102 L300,140 Z"
+                      fill="rgba(13,44,96,0.30)"/>
+              </svg>
+              <div class="co-btn-row">
+                <a href="#" class="btn-learn btn-navy">Learn More <span class="arr"><i class="bi bi-chevron-right"></i></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ╔══════════════════════════╗
+           ║  CARD 2 — ORANGE        ║
+           ║  JobNest Hub Solution   ║
+           ╚══════════════════════════╝ -->
+      <div class="col-lg-3 col-md-6">
+        <div class="co-card">
+          <div class="co-hd hd-2">
+<div class="co-hd-icon">
+              <img src="job nest logo.jpeg" alt="JobNest Logo" style="height: 35px; width: auto; border-radius: 8px;">
+            </div>
+            <div class="co-hd-text">
+              <span class="line1">JobNest</span>
+              <span class="line2">Hub Solution</span>
+            </div>
+          </div>
+          <div class="co-body">
+            <p class="co-desc">Recruitment &amp; Staffing Services</p>
+            <div class="co-wave-bottom">
+              <svg viewBox="0 0 300 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,140 L0,55 C50,45 80,85 130,70 C180,55 240,20 300,10 L300,140 Z"
+                      fill="rgba(192,72,0,0.07)"/>
+                <path d="M0,140 L0,75 C50,65 80,100 130,88 C180,75 240,42 300,30 L300,140 Z"
+                      fill="rgba(192,72,0,0.13)"/>
+                <path d="M200,140 C235,136 272,120 300,102 L300,140 Z"
+                      fill="rgba(192,72,0,0.32)"/>
+              </svg>
+              <div class="co-btn-row">
+                <a href="#" class="btn-learn btn-orange">Learn More <span class="arr"><i class="bi bi-chevron-right"></i></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ╔══════════════════════════╗
+           ║  CARD 3 — BLUE          ║
+           ║  Chandana Tech Careers  ║
+           ╚══════════════════════════╝ -->
+      <div class="col-lg-3 col-md-6">
+        <div class="co-card">
+          <div class="co-hd hd-3">
+<div class="co-hd-icon">
+              <img src="chandana tech carrer logo.jpeg" alt="Tech Careers Logo" style="height: 35px; width: auto; border-radius: 8px;">
+            </div>
+            <div class="co-hd-text">
+              <span class="line1">Chandana</span>
+              <span class="line2">Tech Careers</span>
+            </div>
+          </div>
+          <div class="co-body">
+            <p class="co-desc">Career Guidance &amp; Internships</p>
+            <div class="co-wave-bottom">
+              <svg viewBox="0 0 300 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,140 L0,55 C50,45 80,85 130,70 C180,55 240,20 300,10 L300,140 Z"
+                      fill="rgba(15,70,168,0.07)"/>
+                <path d="M0,140 L0,75 C50,65 80,100 130,88 C180,75 240,42 300,30 L300,140 Z"
+                      fill="rgba(15,70,168,0.12)"/>
+                <path d="M200,140 C235,136 272,120 300,102 L300,140 Z"
+                      fill="rgba(15,70,168,0.30)"/>
+              </svg>
+              <div class="co-btn-row">
+                <a href="#" class="btn-learn btn-navy">Learn More <span class="arr"><i class="bi bi-chevron-right"></i></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ╔══════════════════════════╗
+           ║  CARD 4 — RED-ORANGE    ║
+           ║  Sri Sharada Nikethana  ║
+           ╚══════════════════════════╝ -->
+      <div class="col-lg-3 col-md-6">
+        <div class="co-card">
+          <div class="co-hd hd-4">
+<div class="co-hd-icon">
+              <img src="sri sharada logo.jpeg" alt="Sri Sharada Logo" style="height: 35px; width: auto; border-radius: 8px;">
+            </div>
+            <div class="co-hd-text">
+              <span class="line1">Sri Sharada</span>
+              <span class="line2">Nikethana</span>
+            </div>
+          </div>
+          <div class="co-body">
+            <p class="co-desc">Education &amp; Training Programs</p>
+            <div class="co-wave-bottom">
+              <svg viewBox="0 0 300 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,140 L0,55 C50,45 80,85 130,70 C180,55 240,20 300,10 L300,140 Z"
+                      fill="rgba(156,15,15,0.07)"/>
+                <path d="M0,140 L0,75 C50,65 80,100 130,88 C180,75 240,42 300,30 L300,140 Z"
+                      fill="rgba(156,15,15,0.13)"/>
+                <path d="M200,140 C235,136 272,120 300,102 L300,140 Z"
+                      fill="rgba(156,15,15,0.32)"/>
+              </svg>
+              <div class="co-btn-row">
+                <a href="#" class="btn-learn btn-orange">Learn More <span class="arr"><i class="bi bi-chevron-right"></i></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /row -->
+  </div>
+</section>
+
+<!-- ── SERVICES REMOVED ──
+      <div class="col-6 col-md-3">
+        <div class="svc-tile">
+          <div class="svc-ico-wrap sb">
+            <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="6" width="32" height="22" rx="3" stroke="#fff" stroke-width="2.2" fill="rgba(255,255,255,0.12)"/>
+              <line x1="14" y1="28" x2="10" y2="36" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="28" y1="28" x2="32" y2="36" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="9" y1="36" x2="33" y2="36" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+              <rect x="10" y="20" width="4" height="5" rx="1" fill="#fff"/>
+              <rect x="16" y="16" width="4" height="9" rx="1" fill="#fff"/>
+              <rect x="22" y="12" width="4" height="13" rx="1" fill="rgba(255,255,255,0.8)"/>
+              <rect x="28" y="17" width="4" height="8" rx="1" fill="rgba(255,255,255,0.7)"/>
+            </svg>
+          </div>
+          <div class="svc-lbl">IT Development &amp; Support</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="svc-tile">
+          <div class="svc-ico-wrap so">
+            <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="17" cy="18" r="10" stroke="#fff" stroke-width="2.2" fill="rgba(255,255,255,0.12)"/>
+              <line x1="24" y1="26" x2="36" y2="38" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/>
+              <circle cx="17" cy="14" r="3" fill="#fff"/>
+              <path d="M10,24 C10,20 24,20 24,24" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="svc-lbl">Recruitment &amp; Staffing</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="svc-tile">
+          <div class="svc-ico-wrap sb">
+            <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="21" cy="13" r="5" fill="#fff"/>
+              <path d="M11,34 C11,26 31,26 31,34" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="9" cy="16" r="3.5" fill="rgba(255,255,255,0.8)"/>
+              <path d="M2,34 C2,28 16,28 16,34" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="33" cy="16" r="3.5" fill="rgba(255,255,255,0.8)"/>
+              <path d="M26,34 C26,28 40,28 40,34" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="svc-lbl">Internship Programs</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="svc-tile">
+          <div class="svc-ico-wrap so">
+            <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="10" r="4" fill="#fff"/>
+              <path d="M5,22 C5,17 19,17 19,22" fill="rgba(255,255,255,0.2)" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="30" cy="10" r="4" fill="rgba(255,255,255,0.85)"/>
+              <path d="M23,22 C23,17 37,17 37,22" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="12" cy="30" r="4" fill="rgba(255,255,255,0.85)"/>
+              <path d="M5,42 C5,37 19,37 19,42" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="30" cy="30" r="4" fill="rgba(255,255,255,0.7)"/>
+              <path d="M23,42 C23,37 37,37 37,42" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="21" cy="21" r="2.5" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="svc-lbl">Training &amp; Workshops</div>
+        </div>
+      </div>
+-->
+
+<!-- ── CLIENT / PARTNER LOGOS ── -->
+<hr class="divider-line"/>
+<section class="clients-sec" id="clients">
+  <div class="container">
+    <h2 class="sec-ttl">Our <span>Clients & Partners</span></h2>
+    <div class="sec-bar"></div>
+    <p class="sec-sub" style="margin-bottom:28px;">Trusted by leading organizations across education, technology, and finance.</p>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack">
+
+      <!-- SET 1 -->
+      <div class="client-logo-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Aptech_logo.svg/320px-Aptech_logo.svg.png" alt="Aptech" onerror="this.src='https://logo.clearbit.com/aptech.com'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Sify_logo.svg/320px-Sify_logo.svg.png" alt="Sify" onerror="this.src='https://logo.clearbit.com/sify.com'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/NSE_Logo.svg/320px-NSE_Logo.svg.png" alt="NSE" onerror="this.src='https://logo.clearbit.com/nseindia.com'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/cdac.in" alt="CDAC" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#1a6ac4;font-size:.95rem;\'>C-DAC</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/merittrac.com" alt="MeritTrac" onerror="this.src='https://www.merittrac.com/images/logo.png'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/ltedtech.com" alt="L&T EduTech" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#005bab;font-size:.88rem;\'>L&amp;T EduTech</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/awign.com" alt="Awign" onerror="this.src='https://awign.com/static/media/awign-logo.png'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/vensysco.com" alt="Vensysco" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#333;font-size:.9rem;\'>VENSYSCO</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/gingersoftware.com" alt="Ginger" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#4a9c2f;font-size:.95rem;\'>Ginger</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/eduquity.com" alt="Eduquity" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#a0522d;font-size:.9rem;\'>eduquity</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/innovatiview.com" alt="Innovatiview" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#333;font-size:.82rem;\'>Innovatiview</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/orlando-academy.com" alt="Orlando Academy" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#1a4fa0;font-size:.88rem;\'>Orlando Academy</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/saigroupofcompanies.in" alt="SAI Group" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#c42828;font-size:.88rem;\'>SAI Group</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/intent-infotech.com" alt="Intent Infotech" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#1a3263;font-size:.88rem;\'>Intent Infotech</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/satvat.com" alt="Satvat" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#333;font-size:.9rem;\'>Satvat</span>'"/>
+      </div>
+
+      <!-- SET 2 (duplicate for seamless loop) -->
+      <div class="client-logo-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Aptech_logo.svg/320px-Aptech_logo.svg.png" alt="Aptech" onerror="this.src='https://logo.clearbit.com/aptech.com'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Sify_logo.svg/320px-Sify_logo.svg.png" alt="Sify" onerror="this.src='https://logo.clearbit.com/sify.com'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/NSE_Logo.svg/320px-NSE_Logo.svg.png" alt="NSE" onerror="this.src='https://logo.clearbit.com/nseindia.com'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/cdac.in" alt="CDAC" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#1a6ac4;font-size:.95rem;\'>C-DAC</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/merittrac.com" alt="MeritTrac" onerror="this.src='https://www.merittrac.com/images/logo.png'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/ltedtech.com" alt="L&T EduTech" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#005bab;font-size:.88rem;\'>L&amp;T EduTech</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/awign.com" alt="Awign" onerror="this.src='https://awign.com/static/media/awign-logo.png'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/vensysco.com" alt="Vensysco" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#333;font-size:.9rem;\'>VENSYSCO</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/gingersoftware.com" alt="Ginger" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#4a9c2f;font-size:.95rem;\'>Ginger</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/eduquity.com" alt="Eduquity" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#a0522d;font-size:.9rem;\'>eduquity</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/innovatiview.com" alt="Innovatiview" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#333;font-size:.82rem;\'>Innovatiview</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/orlando-academy.com" alt="Orlando Academy" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#1a4fa0;font-size:.88rem;\'>Orlando Academy</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/saigroupofcompanies.in" alt="SAI Group" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#c42828;font-size:.88rem;\'>SAI Group</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/intent-infotech.com" alt="Intent Infotech" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#1a3263;font-size:.88rem;\'>Intent Infotech</span>'"/>
+      </div>
+      <div class="client-logo-card">
+        <img src="https://logo.clearbit.com/satvat.com" alt="Satvat" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-weight:700;color:#333;font-size:.9rem;\'>Satvat</span>'"/>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE + FORM -->
+<section class="why-sec" id="contact">
+  <div class="container">
+    <a href="#footer-nav" class="sec-ttl-link"><h2 class="sec-ttl">Why Choose <span>Us?</span></h2></a>
+    <div class="sec-bar"></div>
+    <div class="row g-5 mt-1 pb-4">
+      <div class="col-md-5 pt-2">
+        <div class="chk-item"><div class="chk-dot"><i class="bi bi-check-lg"></i></div><span class="chk-txt">Industry Expertise</span></div>
+        <div class="chk-item"><div class="chk-dot"><i class="bi bi-check-lg"></i></div><span class="chk-txt">Strong Student &amp; Employer Network</span></div>
+        <div class="chk-item"><div class="chk-dot"><i class="bi bi-check-lg"></i></div><span class="chk-txt">Professional Training Programs</span></div>
+        <div class="chk-item"><div class="chk-dot"><i class="bi bi-check-lg"></i></div><span class="chk-txt">Career Opportunities for Youth</span></div>
+      </div>
+      <div class="col-md-7">
+        <div class="form-card">
+          <input class="f-input" type="text" placeholder="Your Name"/>
+          <input class="f-input" type="email" placeholder="Your Email"/>
+          <input class="f-input" type="tel" placeholder="Your Phone"/>
+          <textarea class="f-input" rows="4" placeholder="Your Message" style="resize:none;margin-bottom:16px;"></textarea>
+          <button class="btn-send">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GET IN TOUCH -->
+<section class="git-sec">
+  <div class="container git-content">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="git-title">Get in Touch</div>
+        <div class="git-item"><i class="bi bi-geo-alt-fill"></i>Karnataka, India</div>
+        <div class="git-item"><i class="bi bi-telephone-fill"></i>+91 98765 43210</div>
+        <div class="git-item"><i class="bi bi-envelope-fill"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ea83848c85aa89828b848e8b848b8d98859f9a99c4898587">[email&#160;protected]</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-bar">
+  <div class="container">
+    <div class="row align-items-center">
+<div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+        <!-- Footer Navigation -->
+<nav id="footer-nav" class="footer-nav mb-3">
+          <ul class="navbar-nav align-items-center gap-2 flex-wrap">
+            <li><a class="footer-nav-link active" href="#">Home</a></li>
+            <li><a class="footer-nav-link" href="#about">About Us</a></li>
+<li><a class="footer-nav-link" href="#companies">Our Companies</a></li>
+            <li><a class="footer-nav-link" href="#">Careers</a></li>
+            <li><a class="footer-nav-link btn-cnav" href="#contact" style="background: rgba(20,96,184,.2); border: 1px solid rgba(255,255,255,.2); padding: 6px 18px !important; border-radius: 5px; font-size: .78rem;">Contact Us</a></li>
+          </ul>
+        </nav>
+        <hr class="footer-nav-divider"/>
+        <span class="f-lnk">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Follow Us</a>
+        </span>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <a href="#" class="soc"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="soc"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="soc"><i class="bi bi-youtube"></i></a>
+        <a href="#" class="soc"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="soc"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+    <p class="f-copy">© 2020 Chandana Groups. All Rights Reserved.</p>
+  </div>
+</html>
